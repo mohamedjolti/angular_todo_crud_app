@@ -1,0 +1,31 @@
+<p>todos-list works!</p>
+<div class="container">
+    <div class="row" >
+        <form *ngIf="!editing;else content">
+            <input name="title" [(ngModel)]="title">
+            <button class="btn btn-primary" (click)="createTodo()">
+            Add todo
+            </button>
+        </form>
+        <ng-template #content>
+            <form >
+                <input value="{{todo.title}}" name="title" [(ngModel)]="todo.title">
+                <button class="btn btn-primary" (click)="update()">
+                edit todo
+                </button>
+            </form>
+        </ng-template>
+
+        <div class="col-lg-4" *ngFor="let todo of todos"> 
+        
+           <div >
+            {{todo.title}}
+
+           </div>
+
+            <button class="btn btn-danger" (click)="delete(todo)">delete</button>
+            <button class="btn btn-info" (click)="edit(todo)">edit</button>
+
+        </div>
+    </div>
+</div>
